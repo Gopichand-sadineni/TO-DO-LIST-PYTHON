@@ -2,10 +2,14 @@ from tkinter import *
 from tkinter import messagebox
 no_of_tasks = 0
 def add_task():
-    global no_of_tasks
-    no_of_tasks+= 1
-    task=new_task.get()
-    tasks.insert(no_of_tasks,task)
+        if new_task.get():
+            global no_of_tasks
+            no_of_tasks+= 1
+            task=new_task.get()
+            tasks.insert(no_of_tasks,task)
+            new_task.delete(0,END)
+        else:
+            messagebox.showwarning(title='WARNING!', message='Enter the task before adding')
 def delete_task():
     if tasks.curselection():
         tasks.delete(tasks.curselection())
